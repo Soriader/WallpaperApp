@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallpaperApp", "WallpaperApp\WallpaperApp.csproj", "{C635CCEE-177B-4722-AE66-D905E44CAD10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C635CCEE-177B-4722-AE66-D905E44CAD10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C635CCEE-177B-4722-AE66-D905E44CAD10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C635CCEE-177B-4722-AE66-D905E44CAD10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C635CCEE-177B-4722-AE66-D905E44CAD10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04346A99-1169-4655-A8EE-57D98CC503E6}
+	EndGlobalSection
+EndGlobal
