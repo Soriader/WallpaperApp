@@ -1,0 +1,16 @@
+﻿
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">
+            @CardTitle
+        </h5>
+        <img src="@ImageSource" class="card-img-bottom" />
+    </div>
+</div>
+@code 
+{
+    [Parameter]
+    public string CardTitle { get; set; }
+    [Parameter]
+    public string ImageSource { get; set; }
+}
