@@ -2,7 +2,14 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">
-            @CardTitle
+            @if (StrongCardTitle)
+            {
+                <strong>@CardTitle</strong>
+            }
+            else
+            {
+                @CardTitle
+            }
         </h5>
         <img src="@ImageSource" class="card-img-bottom" />
     </div>
@@ -13,4 +20,7 @@
     public string CardTitle { get; set; }
     [Parameter]
     public string ImageSource { get; set; }
+    [Parameter]
+    public bool StrongCardTitle { get; set; }
+
 }
