@@ -1,6 +1,6 @@
 ﻿
 <div class="card">
-    <div class="card-body">
+    <div class="card-body" style="display: flex; flex-direction: column; justify-content: center; gap: 10px">
         <h5 class="card-title">
             @if (StrongCardTitle)
             {
@@ -12,6 +12,7 @@
             }
         </h5>
         <img src="@ImageSource" class="card-img-bottom" />
+        <button class="btn btn-primary" style="background-color: green; margin: 0 10px">more details</button>
     </div>
 </div>
 @code 
