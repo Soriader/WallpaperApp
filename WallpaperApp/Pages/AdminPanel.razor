@@ -1,5 +1,14 @@
 ﻿@page "/AdminPanel"
-<h3>AdminPanel</h3>
+
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<h3>Admin Panel</h3>
+<AuthorizeView>
+
+	Hi @context.User.Identity?.Name!
+
+</AuthorizeView>
 
 @code {
 
