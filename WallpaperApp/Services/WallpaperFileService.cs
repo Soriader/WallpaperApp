@@ -8,6 +8,7 @@ namespace WallpaperApp.Services
         string WallpaperFolderPath = "D:\\WallpaperAppPicture";
         public List<Wallpaper> GetWallpapers()
         {
+            List<string> files = Directory.GetFiles(WallpaperFolderPath, "*.jpg").ToList();
             return null;
         }
     }
