@@ -9,6 +9,15 @@ namespace WallpaperApp.Services
         public List<Wallpaper> GetWallpapers()
         {
             List<string> files = Directory.GetFiles(WallpaperFolderPath, "*.jpg").ToList();
+
+            List<Wallpaper> wallpapers = new List<Wallpaper>();
+
+            foreach (var file in files)
+            {
+                wallpapers.Add(new Wallpaper());
+
+			}
+
             return null;
         }
     }
