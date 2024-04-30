@@ -1,5 +1,9 @@
 ﻿@page "/AllWallpapers"
+@using WallpaperApp.Core;
 @using System.Collections.Generic
+@using WallpaperApp.Services.Interfaces;
+
+@inject IWallpaperFileService wallpaperFileService
 
 <PageTitle>All Wallpapers</PageTitle>
 
@@ -19,10 +23,10 @@
         <div class="col-10">
             <div class="container">
                 <div class="row">
-                    @for (int i = 0; i < 24; i++)
+                    @foreach (var wallpaper in wallpapers)
                     {
                         <div class="col-3">
-                            <WallpaperApp.Components.WallpaperCard CardTitle="Ninja Cat" ImageSource="https://i.imgur.com/ojsc4kk.jpeg"/>
+                            <WallpaperApp.Components.WallpaperCard CardTitle="@wallpaper.FileName" ImageSource="@wallpaper.FullFileName" />
                         </div>
                     }
                 </div>
