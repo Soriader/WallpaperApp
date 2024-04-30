@@ -14,7 +14,6 @@ namespace WallpaperApp.Services
 			try
             {
 				files = Directory.GetFiles(WallpaperFolderPath, "*.jpg").ToList();
-
 				foreach (var file in files)
 				{
 					wallpapers.Add(new Wallpaper(Path.GetFileName(file), file));
@@ -23,9 +22,7 @@ namespace WallpaperApp.Services
             catch(Exception ex)
             {
 				throw new ApplicationException("An exception has been thrown during retrieval of wallpapers.", ex);
-
 			}
-
 
 			if (!wallpapers.Any())
             {

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using WallpaperApp.Areas.Identity;
 using WallpaperApp.Data;
+using WallpaperApp.Services;
+using WallpaperApp.Services.Interfaces;
 
 namespace WallpaperApp
 {
@@ -26,6 +28,8 @@ namespace WallpaperApp
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             builder.Services.AddSingleton<WeatherForecastService>();
+
+            builder.Services.AddScoped<IWallpaperFileService, WallpaperFileService>();
 
             var app = builder.Build();
 
