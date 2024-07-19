@@ -1,4 +1,5 @@
-﻿using WallpaperApp.Core;
+﻿using System.Drawing;
+using WallpaperApp.Core;
 using WallpaperApp.Services.Interfaces;
 
 namespace WallpaperApp.Services
@@ -16,7 +17,9 @@ namespace WallpaperApp.Services
 				files = Directory.GetFiles(WallpaperFolderPath, "*.jpg").ToList();
 				foreach (var file in files)
 				{
-					wallpapers.Add(new Wallpaper(Path.GetFileName(file), Path.Combine("/StaticFiles", Path.GetFileName(file))));
+                    Image image = Image.FromFile(file);
+                    var imageResolution = new ImageResolution(image.Width, image.Height);
+					wallpapers.Add(new Wallpaper(Path.GetFileName(file), Path.Combine("/StaticFiles", Path.GetFileName(file)), imageResolution));
 				}
 			}
             catch(Exception ex)

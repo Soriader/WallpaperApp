@@ -1,6 +1,9 @@
 ﻿@page "/AdminPanel"
 
 @using Microsoft.AspNetCore.Authorization
+@using WallpaperApp.Services.Interfaces
+@inject IWallpaperFileService wallpaperFileService
+
 @attribute [Authorize]
 
 <h3>Admin Panel</h3>
@@ -14,29 +17,20 @@
 
 	</form>
 
-</AuthorizeView>
-
-@code 
-{
-	IReadOnlyList<IBrowserFile> files;
-	async void OnInputFileChange(InputFileChangeEventArgs e)
-	{
-		files = e.GetMultipleFiles();
-		this.StateHasChanged();
-	}
-
-	async void Submit()
-	{
-		foreach (var item in files)
+	<table>
+        <tr>
+            <th>Name</th>
+            <th>Resolution</th>
+        </tr>
+		@foreach (var item in wallpapers)
 		{
-			Stream stream = item.OpenReadStream();
-			var path = $"D:\\WallpaperAppPicture\\{item.Name}";
-			FileStream fileStream = File.Create(path);
-			await stream.CopyToAsync(fileStream);
-			stream.Close();
-			fileStream.Close();
+			<tr>
+				<td>@item.FileName</td>
+				<td>@item.ImageResolution</td>
+			</tr>
 		}
 
-		this.StateHasChanged();
-	}
-}
+	</table>
+
+</AuthorizeView>
+
