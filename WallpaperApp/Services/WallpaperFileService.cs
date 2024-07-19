@@ -16,7 +16,7 @@ namespace WallpaperApp.Services
 				files = Directory.GetFiles(WallpaperFolderPath, "*.jpg").ToList();
 				foreach (var file in files)
 				{
-					wallpapers.Add(new Wallpaper(Path.GetFileName(file), file));
+					wallpapers.Add(new Wallpaper(Path.GetFileName(file), Path.Combine("/StaticFiles", Path.GetFileName(file))));
 				}
 			}
             catch(Exception ex)

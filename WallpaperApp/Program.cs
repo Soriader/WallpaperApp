@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using WallpaperApp.Areas.Identity;
 using WallpaperApp.Data;
 using WallpaperApp.Services;
@@ -48,6 +49,13 @@ namespace WallpaperApp
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(
+                    Directory.GetCurrentDirectory(), "D://WallpaperAppPicture")), 
+                RequestPath = "/StaticFiles" });
 
             app.UseRouting();
 
