@@ -8,7 +8,7 @@ namespace WallpaperApp.Pages
         public string pathOfFolder = $"D:\\WallpaperAppPicture\\";
 
 		public List<Wallpaper> wallpapers { get; set; }
-		protected override async Task OnInitializedAsync()
+		protected override async Task OnParametersSetAsync()
 		{
 			wallpapers = await wallpaperFileService.GetWallpapers();
 		}
@@ -41,10 +41,11 @@ namespace WallpaperApp.Pages
             if (File.Exists(path))
             {
                 File.Delete(path);
-            }
-        }
+                wallpapers.Remove(wallpapers.First(x => x.FileName == fileName));
+			}
+			this.StateHasChanged();
 
 
-
+		}
 	}
 }
