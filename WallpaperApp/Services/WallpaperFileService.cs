@@ -17,9 +17,12 @@ namespace WallpaperApp.Services
 				files = Directory.GetFiles(WallpaperFolderPath, "*.jpg").ToList();
 				foreach (var file in files)
 				{
-                    Image image = Image.FromFile(file);
-                    var imageResolution = new ImageResolution(image.Width, image.Height);
-					wallpapers.Add(new Wallpaper(Path.GetFileName(file), Path.Combine("/StaticFiles", Path.GetFileName(file)), imageResolution));
+                    using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read))
+                    {
+                        Image image = Image.FromStream(stream);
+                        var imageResolution = new ImageResolution(image.Width, image.Height);
+                        wallpapers.Add(new Wallpaper(Path.GetFileName(file), Path.Combine("/StaticFiles", Path.GetFileName(file)), imageResolution));
+                    }
 				}
 			}
             catch(Exception ex)

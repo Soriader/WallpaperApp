@@ -27,6 +27,9 @@
 			<tr>
 				<td>@item.FileName</td>
 				<td>@($"{item.ImageResolution.Width} x {item.ImageResolution.Height}")</td>
+				<td>
+					<button @onclick="()=>Delete(item.FileName)">Delete</button>
+				</td>
 			</tr>
 		}
 

@@ -5,7 +5,9 @@ namespace WallpaperApp.Pages
 {
     public partial class AdminPanel
     {
-        public List<Wallpaper> wallpapers { get; set; }
+        public string pathOfFolder = $"D:\\WallpaperAppPicture\\";
+
+		public List<Wallpaper> wallpapers { get; set; }
 		protected override async Task OnInitializedAsync()
 		{
 			wallpapers = await wallpaperFileService.GetWallpapers();
@@ -23,7 +25,7 @@ namespace WallpaperApp.Pages
             foreach (var item in files)
             {
                 Stream stream = item.OpenReadStream();
-                var path = $"D:\\WallpaperAppPicture\\{item.Name}";
+                var path = Path.Combine(pathOfFolder, item.Name);
                 FileStream fileStream = File.Create(path);
                 await stream.CopyToAsync(fileStream);
                 stream.Close();
@@ -31,6 +33,18 @@ namespace WallpaperApp.Pages
             }
 
             this.StateHasChanged();
+		}
+		async void Delete(string fileName)
+        {
+			var path = Path.Combine(pathOfFolder, fileName);
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
         }
-    }
+
+
+
+	}
 }
