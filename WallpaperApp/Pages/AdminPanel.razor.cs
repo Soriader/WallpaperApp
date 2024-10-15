@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
+using WallpaperApp.Components;
 using WallpaperApp.Core;
+
 
 namespace WallpaperApp.Pages
 {
     public partial class AdminPanel
     {
-        public string pathOfFolder = $"D:\\WallpaperAppPicture\\";
+        private RenameModal renameModal {  get; set; }
+		public string pathOfFolder = $"D:\\WallpaperAppPicture\\";
 
 		public List<Wallpaper> wallpapers { get; set; }
 		protected override async Task OnParametersSetAsync()
@@ -47,5 +50,11 @@ namespace WallpaperApp.Pages
 
 
 		}
+
+
+        async void Rename(string file)
+        {
+            
+        }
 	}
 }

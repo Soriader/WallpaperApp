@@ -1,6 +1,7 @@
 ﻿@page "/AdminPanel"
 
 @using Microsoft.AspNetCore.Authorization
+@using WallpaperApp.Components
 @using WallpaperApp.Services.Interfaces
 @inject IWallpaperFileService wallpaperFileService
 
@@ -30,10 +31,13 @@
 				<td>
 					<button @onclick="()=>Delete(item.FileName)">Delete</button>
 				</td>
+				<td>
+					<button @onclick="()=>renameModal.Open(item.FileName)">Rename</button>
+				</td>
 			</tr>
 		}
 
 	</table>
-
+	<RenameModal @ref=renameModal/>
 </AuthorizeView>
 
