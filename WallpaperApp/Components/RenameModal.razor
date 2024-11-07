@@ -1,5 +1,9 @@
-﻿<Modal @ref="modal">
-		<Title>Provide new File Name</Title>
+﻿@using WallpaperApp.Components
+@using WallpaperApp.Services.Interfaces
+@inject IWallpaperFileService wallpaperFileService
+
+<Modal @ref="modal">
+		<Title>Provide new File Name for @FileName</Title>
 		<Body>
 			<form @onsubmit="Submit">
 

@@ -7,7 +7,13 @@ namespace WallpaperApp.Services
     public class WallpaperFileService : IWallpaperFileService
     {
         string WallpaperFolderPath = "D:\\WallpaperAppPicture";
-        public async Task<List<Wallpaper>> GetWallpapers()
+
+		public async Task<string> GetWallpaperFolderPath()
+		{
+            return WallpaperFolderPath;
+		}
+
+		public async Task<List<Wallpaper>> GetWallpapers()
         {
             List<string> files;
 			List<Wallpaper> wallpapers = new List<Wallpaper>();

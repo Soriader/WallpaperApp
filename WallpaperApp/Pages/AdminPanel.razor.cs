@@ -8,11 +8,12 @@ namespace WallpaperApp.Pages
     public partial class AdminPanel
     {
         private RenameModal renameModal {  get; set; }
-		public string pathOfFolder = $"D:\\WallpaperAppPicture\\";
+		private string PathOfFolder { get; set; }
 
 		public List<Wallpaper> wallpapers { get; set; }
 		protected override async Task OnParametersSetAsync()
 		{
+            PathOfFolder = await wallpaperFileService.GetWallpaperFolderPath();
 			wallpapers = await wallpaperFileService.GetWallpapers();
 		}
 
@@ -28,7 +29,7 @@ namespace WallpaperApp.Pages
             foreach (var item in files)
             {
                 Stream stream = item.OpenReadStream();
-                var path = Path.Combine(pathOfFolder, item.Name);
+                var path = Path.Combine(PathOfFolder, item.Name);
                 FileStream fileStream = File.Create(path);
                 await stream.CopyToAsync(fileStream);
                 stream.Close();
@@ -37,9 +38,10 @@ namespace WallpaperApp.Pages
 
             this.StateHasChanged();
 		}
+
 		async void Delete(string fileName)
         {
-			var path = Path.Combine(pathOfFolder, fileName);
+			var path = Path.Combine(PathOfFolder, fileName);
 
             if (File.Exists(path))
             {
@@ -47,14 +49,6 @@ namespace WallpaperApp.Pages
                 wallpapers.Remove(wallpapers.First(x => x.FileName == fileName));
 			}
 			this.StateHasChanged();
-
-
 		}
-
-
-        async void Rename(string file)
-        {
-            
-        }
 	}
 }
