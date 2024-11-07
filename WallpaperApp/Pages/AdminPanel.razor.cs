@@ -50,5 +50,10 @@ namespace WallpaperApp.Pages
 			}
 			this.StateHasChanged();
 		}
+
+        public async Task OnRename()
+        {
+            await OnParametersSetAsync();
+        }
 	}
 }

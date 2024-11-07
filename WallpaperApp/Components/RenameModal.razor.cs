@@ -1,4 +1,5 @@
-﻿using WallpaperApp.Core;
+﻿using Microsoft.AspNetCore.Components;
+using WallpaperApp.Core;
 
 namespace WallpaperApp.Components
 {
@@ -8,6 +9,9 @@ namespace WallpaperApp.Components
 		private string FileName { get; set; }
 		private string NewName { get; set; }
 		private string PathOfFolder { get; set; }
+
+		[Parameter]
+		public EventCallback OnSubmit { get; set; }
 
 		private List<Wallpaper> Wallpapers { get; set; }
 
@@ -38,7 +42,7 @@ namespace WallpaperApp.Components
 				Wallpapers.Add(newWallpaper);
 			}
 			this.StateHasChanged();
-
+			await OnSubmit.InvokeAsync();
 			modal.Close();
 		}
 
